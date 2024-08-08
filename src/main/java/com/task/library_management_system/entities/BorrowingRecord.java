@@ -1,5 +1,7 @@
 package com.task.library_management_system.entities;
 
+import com.task.library_management_system.dtos.BorrowingRecordDto;
+import com.task.library_management_system.dtos.PatronDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,4 +27,15 @@ public class BorrowingRecord {
 
     private Date borrowingDate;
     private Date returnDate;
+    public static BorrowingRecord from(BorrowingRecordDto borrowingDTO, Book book, Patron patron) {
+        return new BorrowingRecord(
+                borrowingDTO.getId(),
+                book,
+                patron,
+                borrowingDTO.getBorrowingDate(),
+                borrowingDTO.getReturnDate()
+        );
+    }
+
+
 }
