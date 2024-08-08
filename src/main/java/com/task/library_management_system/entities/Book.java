@@ -21,7 +21,12 @@ public class Book {
 
     private String title;
 
+    private String author;
+    private int publicationYear;
+    private String isbn;
+
     public static Book from(BookDto bookdto) {
-        return new Book(bookdto.getId(), bookdto.getTitle());
+        return new Book(bookdto.getId(), bookdto.getTitle(),bookdto.getAuthor(),
+                bookdto.getPublicationYear(), bookdto.getIsbn());
     }
 }
