@@ -1,5 +1,7 @@
 package com.task.library_management_system.entities;
 
+import com.task.library_management_system.dtos.BookDto;
+import com.task.library_management_system.dtos.PatronDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,5 +19,9 @@ public class Patron {
     private Integer id;
     private String name;
     private String contactInfo;
+
+    public static Patron from(PatronDto patrondto) {
+        return new Patron(patrondto.getId(), patrondto.getName(),patrondto.getContactInfo());
+    }
 
 }
