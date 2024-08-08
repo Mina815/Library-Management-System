@@ -2,6 +2,7 @@ package com.task.library_management_system.controllers;
 
 import com.task.library_management_system.dtos.BookDto;
 import com.task.library_management_system.services.BookService;
+import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class BookController{
         return ResponseEntity.ok("Book Deleted");
     }
     @PostMapping
-    public ResponseEntity<String> addBook(@RequestBody BookDto bookDto){
+    public ResponseEntity<String> addBook(@Valid @RequestBody BookDto bookDto){
         try{
 
             bookService.addBook(bookDto);
