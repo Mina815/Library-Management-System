@@ -19,27 +19,37 @@ public class BookController{
 
     @GetMapping
     public List<BookDto> getBook(){
+
         return bookService.getBooks();
     }
     @GetMapping("/{id}")
-    public BookDto getBookById(@PathVariable Integer id){
-        return  bookService.getBookById(id);
+    public ResponseEntity<BookDto> getBookById(@PathVariable Integer id){
+        return  ResponseEntity.ok( bookService.getBookById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateBook(@RequestBody BookDto bookDto, @PathVariable Integer id){
-        bookService.UpdateBook(bookDto,id);
-        return ResponseEntity.ok("Book Updated");
+    public ResponseEntity<String> updateBook(@Valid @RequestBody BookDto bookDto, @PathVariable Integer id){
+        try {
+            bookService.UpdateBook(bookDto,id);
+            return ResponseEntity.ok("Book Updated");
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable Integer id){
-        bookService.DeleteBook(id);
-        return ResponseEntity.ok("Book Deleted");
+        try {
+            bookService.DeleteBook(id);
+            return ResponseEntity.ok("Book Deleted");
+        }
+        catch (Exception e){
+            return  ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
     @PostMapping
     public ResponseEntity<String> addBook(@Valid @RequestBody BookDto bookDto){
         try{
-
             bookService.addBook(bookDto);
             return ResponseEntity.ok("Book added");
         }

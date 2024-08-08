@@ -31,6 +31,7 @@ public class BookService {
         bookRepo.save(UpdatedBook);
     }
     public void DeleteBook(Integer id) {
+        Book book = bookRepo.findById(id).orElseThrow(() -> new RuntimeException("No Book is founded"));
         bookRepo.deleteById(id);
     }
     public void addBook(BookDto bookDto) {
