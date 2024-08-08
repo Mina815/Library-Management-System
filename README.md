@@ -27,8 +27,8 @@ These endpoints allow you to perform CRUD (Create, Read, Update, Delete) operati
       "author": "Author Name",
       "publicationYear": 2020,
       "isbn": "123-4567890123"
-    },
-    ...
+    }
+    
   ]
   ```
 
@@ -84,8 +84,7 @@ These endpoints allow you to perform CRUD operations on patrons.
       "id": 1,
       "name": "Patron Name",
       "contactInfo": "+123456789"
-    },
-    ...
+    }
   ]
   ```
 
@@ -168,23 +167,21 @@ Replace `your_username` and `your_password` with your PostgreSQL username and pa
    ```bash
    git clone https://github.com/your-repo/library-management-system.git
    ```
+2. Import the Project:
+   - If you haven't already opened the project, select File > Open... and navigate to the root directory of the project (library-management-system). Select the pom.xml file and click Open. IntelliJ IDEA will import the Maven project.
 
-2. Navigate to the project directory:
-   ```bash
-   cd library-management-system
-   ```
+3. Configure the Application:
+   - Once the project is imported, IntelliJ should automatically detect it as a Maven project and configure it accordingly.
+   - In the Project Explorer, locate the src/main/java directory and right-click on the main class (the class annotated with @SpringBootApplication). This is usually located in the com.task.library_management_system package.
 
-3. Build the project:
-   ```bash
-   ./mvnw clean install
-   ```
+4. Run the Application:
 
-4. Run the application:
-   ```bash
-   ./mvnw spring-boot:run
-   ```
+    - Right-click on the main class and select Run 'YourMainClass'. IntelliJ IDEA will build and start the Spring Boot application.
+    - You can also use the run/debug configuration options by clicking on the run/debug configuration dropdown in the top-right corner of IntelliJ IDEA. Click Edit Configurations..., create a new Spring Boot configuration if necessary, and set it up to point to the main class. Then you can run the application using the green play button.
 
 5. The application will be available at `http://localhost:8080`.
+
+6. You can use postman or run the unit tests to use the endpoints.
 
 ## Technologies Used
 
