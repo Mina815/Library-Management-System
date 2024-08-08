@@ -1,9 +1,6 @@
 package com.task.library_management_system.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,7 +12,8 @@ import lombok.NoArgsConstructor;
 public class Patron {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "PATRON_ID_SEQ_GENERATOR", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "PATRON_ID_SEQ_GENERATOR")
     private Integer id;
     private String name;
     private String contactInfo;
